@@ -6,24 +6,31 @@ import { correctAnswerAlerts, wrongAnswerAlerts } from '../../assistance/alerts'
 
 class Answer extends Component {
 
+    handleCorrectAnswer(index) {
+        this.props.editMessage("CORRECT !\n\n" + correctAnswerAlerts[index])
+        this.props.questionType == 'selection' ? this.props.addPoints(10) : this.props.addPoints(5)
+    }
+
+    handleWrongAnswer() {
+        if(this.props.livesLeft == 1) {
+            this.props.editMessage('GAME OVER')
+        }
+        else {
+            let message = this.props.livesLeft == 2 ? 'Wrong again..\n\nLast chance..' : "Wrong answer..\n\n" + wrongAnswerAlerts[notificationContentIndex]
+            this.props.editMessage(message)
+        }
+        this.props.reduceLife()
+    }
+
     handleAnswer = () => {
         let toBeComparedWith = this.props.questionType == 'selection' ? this.props.correctAnswer.name : this.props.correctAnswer.trueOrFalse
         let notificationContentIndex = Math.floor(Math.random() * 4)
         
         if(this.props.content == toBeComparedWith)  {
-            this.props.editMessage("CORRECT !\n\n" + correctAnswerAlerts[notificationContentIndex])
-            this.props.questionType == 'selection' ? this.props.addPoints(10) : this.props.addPoints(5) 
+            this.handleCorrectAnswer(notificationContentIndex) 
         }
         else {
-            if(this.props.livesLeft == 1) {
-                this.props.reduceLife()
-                this.props.editMessage('GAME OVER')
-            }
-            else {
-                let message = this.props.livesLeft == 2 ? 'Wrong again..\n\nLast chance..' : "Wrong answer..\n\n" + wrongAnswerAlerts[notificationContentIndex]
-                this.props.editMessage(message)
-                this.props.reduceLife()
-            } 
+            this.handleWrongAnswer()
         }
         this.props.setVisibility(true)   
     }

@@ -11,6 +11,7 @@ export const resetLives = () => {
         type: RESET_LIVES
     }
 }
+
 export const addLife = () => {
     return {
         type: ADD_LIFE

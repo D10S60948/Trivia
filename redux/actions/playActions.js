@@ -1,9 +1,9 @@
 import { ADD_COUNTRY_TO_LIST, SET_NOT_READY,  RESET_ANSWERS_AND_QUESTIONS } from '../types';
 
-export const addCountry = (countryCode) => {
+export const addCountry = (country) => {
     return {
         type: ADD_COUNTRY_TO_LIST,
-        payload: countryCode
+        payload: country
     }
 }
 

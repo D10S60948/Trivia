@@ -37,6 +37,7 @@ class GameOverPopup extends Component {
         if(!wasAdded) {
             highestScores.push(currenctScore)
         }
+        
         await AsyncStorage.setItem('highScores', JSON.stringify(highestScores))
     }
 

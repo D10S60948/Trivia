@@ -2,7 +2,7 @@ import { REDUCE_LIFE, RESET_LIVES, ADD_LIFE } from '../types'
 
 const initialState = 3
 
-export default (state = initialState, action) => {
+export default function lives(state = initialState, action) {
     switch(action.type) {
         case REDUCE_LIFE:
             return state-1
