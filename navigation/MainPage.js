@@ -6,12 +6,6 @@ import NavButton from '../components/NavButton'
 
 
 export default class MainPage extends Component {
-  // static navigationOptions = {
-  //   headerStyle: {
-  //       height: 0, 
-  //       backgroundColor: 'blue'
-  //     },
-  // };
     render() {
         return (
             <LinearGradient

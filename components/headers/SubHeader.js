@@ -17,7 +17,6 @@ export default class SubHeader extends Component {
                                 <Text style={{...styles.text, fontSize: 60}}>{this.props.text[1]}</Text>
                             </View>
                     }
-                    
                 </View>
             </View>      
         );
@@ -38,8 +37,8 @@ const styles = StyleSheet.create({
     },
     image: {
         position: 'absolute',
-        left: 10,
-        top: 85,
+        left: 5,
+        top: 135,
         width: 80, 
         height: 73
     }

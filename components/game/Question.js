@@ -2,47 +2,33 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, ImageBackground, View } from 'react-native'
 import { connect } from 'react-redux'
 import { resetAnwersAndQuestion } from '../../redux/actions'
+import FlagQuestion from './questions/FlagQuestion'
+import CapitalQuestion from './questions/CapitalQuestion'
+import LanguagesQuestion from './questions/LanguagesQuestion'
+import BordersQuestion from './questions/BordersQuestion'
+import PopulationQuestion from './questions/PopulationQuestion'
+import RegionQuestion from './questions/RegionQuestion'
 
 class Question extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            country: this.props.correctAnswer
-        }
-        this.setQuestion = this.setQuestion.bind(this)
-    }
-
     setQuestion() {
-        let correctAnswerCountry = this.props.correctAnswer
         let identifierType = this.props.question.identifier
+        let correctAnswerCountry = this.props.correctAnswer
 
         switch(identifierType) {
             case 'flag':
-                return (
-                    <View style={styles.container}>
-                        <Text style={{ fontFamily: 'Mplus' }}>To which country the following flag belongs to</Text>
-                        <Text style={{ fontSize: 70 }}> { correctAnswerCountry.emoji } </Text>
-                    </View>
-                )
-            case 'currency':
-                return (
-                    <View style={{...styles.container, flexWrap: 'wrap'}}>
-                        <Text style={{ fontFamily: 'Mplus' }}>The currency in { correctAnswerCountry.name } is { correctAnswerCountry.currency }</Text>
-                    </View>
-                )
+                return <FlagQuestion flag={ correctAnswerCountry.emoji } />
+            case 'capital':
+                return <CapitalQuestion countryName={correctAnswerCountry.name} />
             case 'language':
                 if(correctAnswerCountry.languages.length == 0) this.props.resetAnwersAndQuestion()
-                return (
-                    <View style={styles.container}>
-                        <View style={{flexWrap: 'wrap'}}>
-                            <Text style={{ fontFamily: 'Mplus' }}>The spoken languages in { correctAnswerCountry.name } are: </Text>
-                        </View>
-                        <View>
-                            <Text style={{ fontFamily: 'Mplus-Bold' }}>{ correctAnswerCountry.languages[0].name }</Text>
-                        </View>
-                    </View>
-                )
+                return <LanguagesQuestion languages={correctAnswerCountry.languages} name={correctAnswerCountry.name} />
+            case 'borders':
+                return <BordersQuestion borders={correctAnswerCountry.borders} name={correctAnswerCountry.name} countries={this.props.allCountries} />
+            case 'population':
+                return <PopulationQuestion name={correctAnswerCountry.name} />
+            case 'region':
+                return <RegionQuestion name={correctAnswerCountry.name} region={correctAnswerCountry.region} />
         }
     }
     
@@ -75,6 +61,7 @@ function mapStateToProps(state) {
         ready: state.play.ready,
         question: state.play.question,
         correctAnswer: state.play.correctAnswer,
+        allCountries: state.play.countries
     };
 }
 

@@ -1,4 +1,5 @@
-export const URL = 'https://countries.trevorblades.com';
+export const graphqlURL = 'https://countries.trevorblades.com'
+export const graphqlAllCountriesQuery = '{ countries { code name emoji currency languages { name } } }'
 
 export function getQuery(queryContent) {
     return {

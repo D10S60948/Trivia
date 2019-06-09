@@ -3,11 +3,9 @@ import { StyleSheet, View, Text, AsyncStorage, ImageBackground } from 'react-nat
 import { connect } from 'react-redux'
 import { addCountry, resetAnwersAndQuestion, setHighestScores } from '../redux/actions'
 import { withNavigation } from 'react-navigation';
-import { getQuery, URL } from '../assistance/queries'
 import { Font } from 'expo'
 import { LinearGradient } from 'expo'
-
-const allCountryCodesQuery = '{ countries { code name emoji currency languages { name } } }'
+import { setCountriesInfo } from '../assistance/loadData'
 
 class WelcomePage extends Component {
     constructor(props) {
@@ -35,16 +33,13 @@ class WelcomePage extends Component {
     }
     
     async componentDidMount() {
+        await setCountriesInfo(this.props.addCountry)
         await this.setHighestScores()
         await Font.loadAsync({ 'Signika': require('../assets/fonts/Signika-Regular.ttf') });
         await Font.loadAsync({ 'Caveat': require('../assets/fonts/CaveatBrush-Regular.ttf') });
         await Font.loadAsync({ 'Delius': require('../assets/fonts/DeliusSwashCaps-Regular.ttf') });
         await Font.loadAsync({ 'Mplus-Bold': require('../assets/fonts/MPLUS1p-Bold.ttf') });
         await Font.loadAsync({ 'Mplus': require('../assets/fonts/MPLUS1p-Regular.ttf') });
-        await fetch(URL, getQuery(allCountryCodesQuery))
-            .then(res => res.json())
-                .then(res => res.data.countries.map(country => this.props.addCountry(country)))
-                    .catch(err => console.log(`GamePage.componentDidMount  error: ${err}`))
         this.props.resetAnwersAndQuestion()
         this.props.navigation.navigate('MainPage')
     }

@@ -5,14 +5,24 @@ import { connect } from 'react-redux'
 
 class Answers extends Component {
 
-    getAnswers(type) {
-        if(type == 'selection') {
+    getAnswerType(answer, key) {
+        switch(this.props.questionType.identifier) {
+            case 'flag':
+                return <Answer key={key} content={answer.name} />
+            case 'capital':
+                return <Answer key={key} content={answer.capital} />
+            case 'population':
+                return <Answer key={key} content={answer.population} />
+            case 'region':
+                return <Answer key={key} content={answer.region} />
+        }
+    }
+
+    getAnswers() {
+        if(this.props.questionType.type == 'selection') {
             return (
                 <View style={styles.container}>
-                    <Answer content={this.props.selectedAnswers[0].name} />
-                    <Answer content={this.props.selectedAnswers[1].name} />
-                    <Answer content={this.props.selectedAnswers[2].name} />
-                    <Answer content={this.props.selectedAnswers[3].name} />
+                    {this.props.selectedAnswers.map((answer, key) => this.getAnswerType(answer, key))}
                 </View>
             )
         }
@@ -27,10 +37,9 @@ class Answers extends Component {
     }
 
     render() {
-        console.log()
         return (
             <View style={styles.background} >
-                { this.props.isReady && this.getAnswers(this.props.questionType) }
+                { this.props.isReady && this.getAnswers() }
             </View>
         );
     }
@@ -53,7 +62,7 @@ function mapStateToProps(state) {
     return {
         selectedAnswers: state.play.selectedAnswers,
         isReady: state.play.ready,
-        questionType: state.play.question.type
+        questionType: state.play.question
     };
 }
 

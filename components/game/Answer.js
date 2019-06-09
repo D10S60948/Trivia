@@ -11,7 +11,7 @@ class Answer extends Component {
         this.props.questionType == 'selection' ? this.props.addPoints(10) : this.props.addPoints(5)
     }
 
-    handleWrongAnswer() {
+    handleWrongAnswer(notificationContentIndex) {
         if(this.props.livesLeft == 1) {
             this.props.editMessage('GAME OVER')
         }
@@ -22,15 +22,28 @@ class Answer extends Component {
         this.props.reduceLife()
     }
 
+    getAnswerByIdentifier() {
+        switch(this.props.questionIdentifier) {
+            case 'flag':
+                return this.props.correctAnswer.name
+            case 'capital':
+                return this.props.correctAnswer.capital
+            case 'population':
+                return this.props.correctAnswer.population
+            case 'region':
+                return this.props.correctAnswer.region
+        }
+    }
+
     handleAnswer = () => {
-        let toBeComparedWith = this.props.questionType == 'selection' ? this.props.correctAnswer.name : this.props.correctAnswer.trueOrFalse
+        let toBeComparedWith = this.props.questionType == 'selection' ? this.getAnswerByIdentifier() : this.props.correctAnswer.trueOrFalse
         let notificationContentIndex = Math.floor(Math.random() * 4)
         
         if(this.props.content == toBeComparedWith)  {
             this.handleCorrectAnswer(notificationContentIndex) 
         }
         else {
-            this.handleWrongAnswer()
+            this.handleWrongAnswer(notificationContentIndex)
         }
         this.props.setVisibility(true)   
     }
@@ -50,7 +63,7 @@ class Answer extends Component {
                 >
                     
                     <Text style={styles.text}>
-                        {this.props.content}
+                        {this.props.content.toLocaleString()}
                     </Text>
                 </TouchableHighlight>
             </ImageBackground>
@@ -85,6 +98,7 @@ function mapStateToProps(state) {
         correctAnswer: state.play.correctAnswer,
         isReady: state.play.ready,
         questionType: state.play.question.type,
+        questionIdentifier: state.play.question.identifier,
         livesLeft: state.lives
     };
 }

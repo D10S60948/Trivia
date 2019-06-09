@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     image: {
         position: 'absolute',
         left:-10,
-        top:110,
+        top:145,
         width:120, 
         height:120
     }

@@ -12,11 +12,15 @@ const navigator = createStackNavigator({
   HighestScoresPage: { screen: HighestScoresPage }
   },
   {
-    headerMode: 'none',
-  },
-  {
     initialRouteName: 'WelcomePage',
     transitionConfig: () => fadeIn(2000),
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#43B2B0',
+        height: 0
+      },
+      headerTintColor: 'rgba(0,0,0,0)',
+    }
   }
 );
 
