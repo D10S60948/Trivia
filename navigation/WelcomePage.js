@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, AsyncStorage, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
-import { addCountry, resetAnwersAndQuestion, setHighestScores } from '../redux/actions'
+import { addCountry, resetAnwersAndQuestion, setHighestScores, setSounds } from '../redux/actions'
 import { withNavigation } from 'react-navigation';
 import { Font } from 'expo'
 import { LinearGradient } from 'expo'
 import { setCountriesInfo } from '../assistance/loadData'
+import { Audio } from 'expo'
 
 class WelcomePage extends Component {
     constructor(props) {
@@ -27,12 +28,26 @@ class WelcomePage extends Component {
         this.props.setHighestScores(highestScoresList)
     }
 
+    async setSounds() {
+        Audio.setIsEnabledAsync(true)
+        let wrongSound = new Audio.Sound(), applauseSound = new Audio.Sound(), correctSound = new Audio.Sound() ;
+        try {
+            await wrongSound.loadAsync(require('../assets/sound/wrong.mp3'));
+            await applauseSound.loadAsync(require('../assets/sound/crowdapplause.mp3'));
+            await correctSound.loadAsync(require('../assets/sound/correct.mp3'));
+        } catch (error) {
+            console.log(error)
+        }
+        this.props.setSounds({wrong: wrongSound, correct: correctSound, applause: applauseSound, isOn: true})
+    }
+
     async componentWillMount() {
         await Font.loadAsync({ 'Modak': require('../assets/fonts/Modak-Regular.ttf') });
         this.setState({ ready: true })
     }
     
     async componentDidMount() {
+        await this.setSounds()
         await setCountriesInfo(this.props.addCountry)
         await this.setHighestScores()
         await Font.loadAsync({ 'Signika': require('../assets/fonts/Signika-Regular.ttf') });
@@ -88,4 +103,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(null, { addCountry, resetAnwersAndQuestion, setHighestScores })(withNavigation(WelcomePage))
+export default connect(null, { addCountry, resetAnwersAndQuestion, setHighestScores, setSounds })(withNavigation(WelcomePage))

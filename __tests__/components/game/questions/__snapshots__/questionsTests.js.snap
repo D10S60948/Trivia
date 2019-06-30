@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"BordersQuestion" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus-Bold",
+        }
+      }
+    >
+      Israel
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus",
+        }
+      }
+    >
+       and 
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus-Bold",
+        }
+      }
+    >
+      
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus",
+        }
+      }
+    >
+       share border
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`"CapitalQuestion" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingHorizontal": 20,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Mplus",
+      }
+    }
+  >
+    What is the capital of 
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Mplus-Bold",
+      }
+    }
+  >
+    Israel
+  </Text>
+</View>
+`;
+
+exports[`"FlagQuestion" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Mplus",
+      }
+    }
+  >
+    To which country the following flag belongs to
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 70,
+      }
+    }
+  >
+    emoji
+  </Text>
+</View>
+`;
+
+exports[`"LanguagesQuestion" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexWrap": "wrap",
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus",
+        }
+      }
+    >
+      The spoken languages in 
+      Israel
+       are: 
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus-Bold",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus-Bold",
+        }
+      }
+    >
+      , undefined
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`"PopulationQuestion" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexWrap": "wrap",
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus",
+        }
+      }
+    >
+      The population of 
+      Israel
+       is 
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`"RegionQuestion" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus-Bold",
+        }
+      }
+    >
+      Israel
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus",
+        }
+      }
+    >
+       is in 
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mplus-Bold",
+        }
+      }
+    >
+      Asia
+    </Text>
+  </View>
+</View>
+`;

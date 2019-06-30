@@ -1,15 +1,15 @@
 import { getQuery, graphqlURL, graphqlAllCountriesQuery } from './queries'
 
-async function getFromTrevorblades() {
+export async function getFromTrevorblades() {
     let countries
     await fetch(graphqlURL, getQuery(graphqlAllCountriesQuery))
-        .then(res => res.json())
-            .then(res => { countries = res.data.countries  })
+        .then(response => response.json())
+            .then(results => { countries = results.data.countries  })
                 .catch(err => console.log(`loadData.componentDidMount  error: ${err}`))    
     return countries
 }
 
-async function getFromRestcountries() {
+export async function getFromRestcountries() {
     let countries
     await fetch(`https://restcountries.eu/rest/v2/all?fields=borders;capital;population;region;alpha2Code;alpha3Code`)
         .then(res => res.json())
@@ -31,6 +31,4 @@ export async function setCountriesInfo(addCountry) {
             }
         }
     })
-
-    console.log('getCountriesInfo')
 }

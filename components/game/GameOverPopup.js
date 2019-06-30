@@ -3,9 +3,9 @@ import { View, TouchableHighlight, Text, Modal, StyleSheet, AsyncStorage, TextIn
 import {  setNotReady, resetAnwersAndQuestion, setVisibility, resetLives, resetScore } from '../../redux/actions'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
+import { makeSound } from '../../assistance/makeSounds'
 
-class GameOverPopup extends Component {
-
+export class GameOverPopup extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -37,7 +37,6 @@ class GameOverPopup extends Component {
         if(!wasAdded) {
             highestScores.push(currenctScore)
         }
-        
         await AsyncStorage.setItem('highScores', JSON.stringify(highestScores))
     }
 
@@ -60,10 +59,13 @@ class GameOverPopup extends Component {
         this.props.navigation.navigate('GamePage')
     }
 
-    componentWillMount() {
+    async componentWillMount() {
         let highestScoresList = this.props.highestScores
         if(highestScoresList.length < 10 || this.props.score >= highestScoresList[highestScoresList.length-1].score) {
             this.setState({ highScore: true })
+            if(this.props.soundsOn) makeSound(this.props.sounds.applause) 
+        } else {
+            if(this.props.soundsOn) makeSound(this.props.sounds.wrong) 
         }
     }
 
@@ -75,7 +77,7 @@ class GameOverPopup extends Component {
                 <TextInput
                     onChangeText={(text) => this.setState({text})}
                     value={this.state.text}
-                    style={{...styles.text, color: 'black', padding: 7, backgroundColor: 'lightgray', width: '80%'}}
+                    style={{...styles.text, color: 'black', padding: 7, backgroundColor: 'lightgray'}}
                 />
             </View>
         )
@@ -95,11 +97,11 @@ class GameOverPopup extends Component {
                             <Text style={styles.text}>GAME OVER</Text>
                         </View>
                         { this.state.highScore ? this.getUserName() : null }
-                        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, flexDirection: 'row' }}> 
-                            <TouchableHighlight onPress={() => this.toMainPage()} style={styles.restartButton}>
+                        <View style={{ justifyContent: 'space-between', alignItems: 'center', flex: 1, flexDirection: 'row' }}> 
+                            <TouchableHighlight onPress={() => this.toMainPage()} style={styles.button}>
                                 <Text style={{ fontFamily: 'Signika'}}>Back to menu</Text>
                             </TouchableHighlight>
-                            <TouchableHighlight onPress={() => this.restartGame()} style={styles.restartButton}>
+                            <TouchableHighlight onPress={() => this.restartGame()} style={styles.button}>
                                 <Text style={{ fontFamily: 'Signika'}}>Try again</Text>
                             </TouchableHighlight>
                         </View>
@@ -125,30 +127,33 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 20
     },
-    restartButton: {
+    button: {
         backgroundColor: 'grey',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,
-        paddingVertical: 5,
-        paddingHorizontal: 25
+        paddingVertical: 7,
+        paddingHorizontal: 15
     },
     text: {
         fontFamily: 'Signika', 
         color: 'white', 
         marginVertical: 15,
-        textAlign: 'center'
+        textAlign: 'center', 
+        fontSize: 17
     }
 })
 
-function mapStateToProps(state) {
-    return {
-        visibility: state.notifications.visibility,
-        message: state.notifications.message,
-        livesLeft: state.lives,
-        score: state.score.currentScore,
-        highestScores: state.score.highestScoreList
-    };
-}
+    function mapStateToProps(state) {
+        return {
+            visibility: state.notifications.visibility,
+            message: state.notifications.message,
+            livesLeft: state.lives,
+            score: state.score.currentScore,
+            highestScores: state.score.highestScoreList,
+            sounds: state.notifications.sounds,
+            soundsOn: state.notifications.sounds.isOn
+        };
+    }
 
-export default connect(mapStateToProps, { setNotReady, resetAnwersAndQuestion, setVisibility, resetLives, resetScore })(withNavigation(GameOverPopup))
+    export default connect(mapStateToProps, { setNotReady, resetAnwersAndQuestion, setVisibility, resetLives, resetScore })(withNavigation(GameOverPopup))

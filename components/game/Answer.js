@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, TouchableHighlight, Text, ImageBackground } from 'react-native';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { addPoints, resetScore, reduceLife, editMessage, setVisibility } from '../../redux/actions';
-import { correctAnswerAlerts, wrongAnswerAlerts } from '../../assistance/alerts'
+import { correctAnswerAlerts, wrongAnswerAlerts } from '../../assistance/alerts';
+import { makeSound } from '../../assistance/makeSounds';
 
-class Answer extends Component {
+export class Answer extends Component {
 
     handleCorrectAnswer(index) {
+        if(this.props.soundsOn) makeSound(this.props.sounds.correct)
         this.props.editMessage("CORRECT !\n\n" + correctAnswerAlerts[index])
         this.props.questionType == 'selection' ? this.props.addPoints(10) : this.props.addPoints(5)
     }
@@ -16,6 +18,7 @@ class Answer extends Component {
             this.props.editMessage('GAME OVER')
         }
         else {
+            if(this.props.soundsOn) makeSound(this.props.sounds.wrong)
             let message = this.props.livesLeft == 2 ? 'Wrong again..\n\nLast chance..' : "Wrong answer..\n\n" + wrongAnswerAlerts[notificationContentIndex]
             this.props.editMessage(message)
         }
@@ -29,7 +32,7 @@ class Answer extends Component {
             case 'capital':
                 return this.props.correctAnswer.capital
             case 'population':
-                return this.props.correctAnswer.population
+                return this.props.correctAnswer.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             case 'region':
                 return this.props.correctAnswer.region
         }
@@ -61,9 +64,8 @@ class Answer extends Component {
                 underlayColor='lightslategrey'
                 onPress={this.handleAnswer}
                 >
-                    
                     <Text style={styles.text}>
-                        {this.props.content.toLocaleString()}
+                        {this.props.content}
                     </Text>
                 </TouchableHighlight>
             </ImageBackground>
@@ -99,7 +101,9 @@ function mapStateToProps(state) {
         isReady: state.play.ready,
         questionType: state.play.question.type,
         questionIdentifier: state.play.question.identifier,
-        livesLeft: state.lives
+        livesLeft: state.lives,
+        sounds: state.notifications.sounds,
+        soundsOn: state.notifications.sounds.isOn
     };
 }
 

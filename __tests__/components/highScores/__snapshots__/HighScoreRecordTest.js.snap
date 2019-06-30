@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"HighScoreRecord" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "height": "8%",
+      "justifyContent": "space-around",
+      "margin": "1%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0,51,102,0.25)",
+        "borderRadius": 7,
+        "flex": 1,
+        "justifyContent": "center",
+        "marginHorizontal": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Delius",
+          "fontSize": 16,
+        }
+      }
+    >
+      5
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgba(0,51,102,0.25)",
+        "borderRadius": 7,
+        "flex": 8,
+        "justifyContent": "center",
+        "marginHorizontal": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Delius",
+          "fontSize": 16,
+          "paddingLeft": 10,
+        }
+      }
+    >
+      Test
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0,51,102,0.25)",
+        "borderRadius": 7,
+        "flex": 2,
+        "justifyContent": "center",
+        "marginHorizontal": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Delius",
+          "fontSize": 16,
+        }
+      }
+    >
+      100
+    </Text>
+  </View>
+</View>
+`;

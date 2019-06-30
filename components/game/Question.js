@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, ImageBackground, View } from 'react-native'
+import { StyleSheet, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import { resetAnwersAndQuestion } from '../../redux/actions'
 import FlagQuestion from './questions/FlagQuestion'
@@ -9,7 +9,7 @@ import BordersQuestion from './questions/BordersQuestion'
 import PopulationQuestion from './questions/PopulationQuestion'
 import RegionQuestion from './questions/RegionQuestion'
 
-class Question extends Component {
+export class Question extends Component {
 
     setQuestion() {
         let identifierType = this.props.question.identifier

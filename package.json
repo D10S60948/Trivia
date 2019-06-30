@@ -5,15 +5,19 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --cache --format codeframe --ext .js ."
   },
   "dependencies": {
+    "es6-promise": "^4.2.8",
     "expo": "^32.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-elements": "^1.1.0",
     "react-native-gradient": "^0.4.9",
     "react-native-linear-gradient": "^2.5.4",
+    "react-native-picker-checkbox": "^2.0.1",
     "react-native-radial-gradient": "^1.0.5",
     "react-native-xml2js": "^1.0.3",
     "react-navigation": "^3.10.1",
@@ -23,7 +27,14 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
-    "jest": "^24.8.0"
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-native": "3.7.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "private": true
 }

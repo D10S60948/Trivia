@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"Header" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 2,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Image
+    resizeMode="stretch"
+    source={
+      Object {
+        "testUri": "../../../images/logo4.png",
+      }
+    }
+    style={
+      Object {
+        "height": 120,
+        "left": -10,
+        "position": "absolute",
+        "top": 145,
+        "width": 120,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 2,
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#1F1F3F",
+          "fontFamily": "Modak",
+          "fontSize": 50,
+          "marginBottom": -30,
+          "textShadowOffset": Object {
+            "height": 2,
+            "width": 3,
+          },
+        }
+      }
+    >
+      COUNTRIES
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#1F1F3F",
+          "fontFamily": "Modak",
+          "fontSize": 70,
+          "textShadowOffset": Object {
+            "height": 2,
+            "width": 3,
+          },
+        }
+      }
+    >
+      TRIVIA
+    </Text>
+  </View>
+</View>
+`;

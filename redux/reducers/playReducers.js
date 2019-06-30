@@ -1,11 +1,12 @@
-import { ADD_COUNTRY_TO_LIST, SET_NOT_READY, RESET_ANSWERS_AND_QUESTIONS } from '../types'
+import { ADD_COUNTRY_TO_LIST, SET_NOT_READY, RESET_ANSWERS_AND_QUESTIONS, SET_SUBJECTS } from '../types'
 
 const initialState = {
     countries: [],
     selectedAnswers: [],
     correctAnswer: '',
     question: {},
-    ready: false
+    ready: false,
+    selectedQuestionSubjects: [0,1,2,3,4,5]
 }
 
 export default (state = initialState, action) => {
@@ -15,7 +16,7 @@ export default (state = initialState, action) => {
         case SET_NOT_READY: 
             return {...state, ready: false}
         case RESET_ANSWERS_AND_QUESTIONS:
-            let newQuestion = setQuestion()
+            let newQuestion = setQuestion(state.selectedQuestionSubjects)
             let newAnswers = setAnswers(state.countries, newQuestion)
             return {...state, 
                 selectedAnswers: newAnswers.answers, 
@@ -23,14 +24,17 @@ export default (state = initialState, action) => {
                 question: newQuestion,
                 ready: true
             }
+        case SET_SUBJECTS:
+            return {...state, selectedQuestionSubjects: action.payload}
         default:
             return state
     }
 }
 
-function setQuestion() {
-    let randomQuestion = Math.floor(Math.random() * 6)
-    switch(randomQuestion) {
+function setQuestion(selectedSubjects) {
+    let randomIndex = Math.floor(Math.random() * selectedSubjects.length)
+    
+    switch(selectedSubjects[randomIndex]) {
         case 0:
             return {identifier: 'flag', type: 'selection'}
         case 1:

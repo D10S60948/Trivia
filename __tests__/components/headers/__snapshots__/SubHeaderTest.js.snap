@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`"SubHeader" component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Image
+    resizeMode="stretch"
+    source={
+      Object {
+        "testUri": "../../../images/logo1.png",
+      }
+    }
+    style={
+      Object {
+        "height": 100,
+        "position": "absolute",
+        "right": 1,
+        "top": 58,
+        "width": 76,
+        "zIndex": 10,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#1F1F3F",
+          "fontFamily": "Modak",
+          "fontSize": 60,
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": 2,
+          },
+        }
+      }
+    >
+      SETTINGS
+    </Text>
+  </View>
+</View>
+`;

@@ -4,7 +4,7 @@ import {  setNotReady, resetAnwersAndQuestion, setVisibility, resetLives, resetS
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 
-class Popup extends Component {
+export class Popup extends Component {
 
     handleClosePopup() {
         this.props.setNotReady()

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Answer from './Answer';
 import { connect } from 'react-redux'
 
-class Answers extends Component {
+export class Answers extends Component {
 
     getAnswerType(answer, key) {
         switch(this.props.questionType.identifier) {
@@ -12,7 +12,7 @@ class Answers extends Component {
             case 'capital':
                 return <Answer key={key} content={answer.capital} />
             case 'population':
-                return <Answer key={key} content={answer.population} />
+                return <Answer key={key} content={answer.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
             case 'region':
                 return <Answer key={key} content={answer.region} />
         }

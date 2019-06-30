@@ -1,4 +1,4 @@
-import { ADD_COUNTRY_TO_LIST, SET_NOT_READY,  RESET_ANSWERS_AND_QUESTIONS } from '../types';
+import { ADD_COUNTRY_TO_LIST, SET_NOT_READY,  RESET_ANSWERS_AND_QUESTIONS, SET_SUBJECTS } from '../types';
 
 export const addCountry = (country) => {
     return {
@@ -16,5 +16,12 @@ export const setNotReady = () => {
 export const resetAnwersAndQuestion = () => {
     return {
         type: RESET_ANSWERS_AND_QUESTIONS
+    }
+}
+
+export const setSubjects = (questions) => {
+    return {
+        type: SET_SUBJECTS,
+        payload: questions
     }
 }

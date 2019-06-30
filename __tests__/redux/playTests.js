@@ -7,7 +7,8 @@ const initialState = {
     selectedAnswers: [],
     correctAnswer: '',
     question: {},
-    ready: false
+    ready: false,
+    selectedQuestionSubjects: [0,1,2,3,4,5]
 }
 
 describe('play reducers', () => {

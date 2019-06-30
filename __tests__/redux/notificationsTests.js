@@ -4,7 +4,8 @@ import * as types from '../../redux/types'
 
 const initialState = {
     visibility: false,
-    message: ''
+    message: '',
+    sounds: {}
 }
 
 describe('notifications reducers', () => {

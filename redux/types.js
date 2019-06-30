@@ -1,6 +1,7 @@
 export const ADD_COUNTRY_TO_LIST = 'ADD_COUNTRY_TO_LIST'
 export const SET_NOT_READY = 'SET_NOT_READY'
 export const RESET_ANSWERS_AND_QUESTIONS = 'RESET_ANSWERS_AND_QUESTIONS'
+export const SET_SUBJECTS = 'SET_SUBJECTS'
 
 export const ADD_POINTS = 'ADD_POINTS'
 export const RESET_SCORE = 'RESET_SCORE'
@@ -12,3 +13,6 @@ export const ADD_LIFE = 'ADD_LIFE'
 
 export const EDIT_MESSAGE = 'EDIT_MESSAGE'
 export const SET_VISIBILITY = 'SET_VISIBILITY'
+export const SET_SOUNDS = 'SET_SOUNDS'
+export const TOGGLE_SOUNDS = 'TOGGLE_SOUNDS'
+

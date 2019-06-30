@@ -18,7 +18,7 @@ export default class MainPage extends Component {
                         <View style={styles.buttonsSection} >
                             <NavButton title='Start' page='GamePage'/>
                             <NavButton title='Highest scores' page='HighestScoresPage'/>
-                            <NavButton title='Settings' page='GamePage'/>
+                            <NavButton title='Settings' page='SettingsPage'/>
                         </View>
                 </View>
              </LinearGradient>

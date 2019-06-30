@@ -3,10 +3,18 @@ import { StyleSheet, View, Text, Image } from 'react-native'
 
 export default class SubHeader extends Component {
 
+    getImage() {
+        if(this.props.text.length != 1) {
+            return <Image source={require('../../images/logo3.png')} style={styles.image1} resizeMode='stretch' />
+        } else {
+            return <Image source={require('../../images/logo1.png')} style={styles.image2} resizeMode='stretch' />
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>    
-                <Image source={require('../../images/logo3.png')} style={styles.image} resizeMode='stretch' />
+                { this.getImage() }
                 <View style={styles.container}>
                     {
                         this.props.text.length == 1 ?
@@ -35,11 +43,19 @@ const styles = StyleSheet.create({
       textShadowOffset: {width: 2,height:1},
       color:'#1F1F3F'
     },
-    image: {
+    image1: {
         position: 'absolute',
         left: 5,
         top: 135,
         width: 80, 
         height: 73
+    },
+    image2: {
+        position: 'absolute',
+        right: 1,
+        top: 58,
+        width: 76, 
+        height: 100,
+        zIndex: 10
     }
 });
