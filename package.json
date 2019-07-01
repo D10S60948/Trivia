@@ -36,5 +36,34 @@
   "jest": {
     "preset": "react-native"
   },
+  "checkSubmission": {
+    "ex": "final project",
+    "students": [
+      {
+        "id": "300012614",
+        "fullName": "Avishai Nudelman",
+        "email": "avishainu@gmail.com"
+      },
+      {
+        "id": "201414283",
+        "fullName": "Elad Itzhak",
+        "email": "Eladit@gmail.com"
+      }
+    ],
+    "os": "Windows",
+    "device": "Android",
+    "deliveryDate": "01/07/2019",
+    "delay": false,
+    "delayReason": "none",
+    "comments": ""
+  },
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/D10S60948/Trivia"
+  },
+  "author": "Avishai Nudelman && Elad Itzhak",
+  "license": "ISC",
+  "description": "React Native trivia game",
   "private": true
 }
